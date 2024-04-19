@@ -16,6 +16,7 @@ export class ControlButtonComponent {
     {
       icon: 'bi-plus',
       type: 'outline',
+      class: 'p-2',
       click: () => this.value++,
     },
   ];
@@ -23,6 +24,7 @@ export class ControlButtonComponent {
     {
       icon: 'bi-dash',
       type: 'outline',
+      class: 'p-2',
       disable: () => this.value <= 1,
       click: () => this.value--,
     },
