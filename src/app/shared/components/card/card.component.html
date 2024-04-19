@@ -4,7 +4,7 @@
   <div class="w-full h-fit overflow-hidden">
     <img
       class="w-full object-contain z-0 hover:scale-110 transition-all duration-300"
-      [src]="card.img"
+      src="{{card.img}}"
       [alt]="card.name"
       (onerror)="card.img = 'favicon.ico'"
     />

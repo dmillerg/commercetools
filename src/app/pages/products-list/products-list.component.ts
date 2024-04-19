@@ -10,7 +10,12 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-products-list',
   standalone: true,
-  imports: [CardComponent, CommonModule, PaginatorComponent],
+  imports: [
+    CardComponent,
+    CommonModule,
+    PaginatorComponent,
+    PaginatorComponent,
+  ],
   providers: [DataService],
   templateUrl: './products-list.component.html',
   styleUrl: './products-list.component.scss',
@@ -31,14 +36,24 @@ export class ProductsListComponent implements OnInit {
       },
     },
   ];
+  pageSize: number = 0;
+  currentPageData: any[] = [];
+
+  onPageChange(data: any[]) {
+    this.currentPageData = data;
+  }
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
     this._dataService
       .getData()
       .pipe(take(1))
       .subscribe({
-        next: (response) =>
-          (this.data = response.map((e) => {
+        next: (response) => {
+          this.data = response.map((e) => {
             if (!this.categorys.includes(e.Category))
               this.categorys.push(e.Category);
             return {
@@ -50,7 +65,10 @@ export class ProductsListComponent implements OnInit {
               rating: e.Reviews.rating,
               data: e,
             };
-          })),
+          });
+          this.pageSize = this.data.length;
+          this.currentPageData = this.data.slice(0, 10);
+        },
       });
   }
 }
