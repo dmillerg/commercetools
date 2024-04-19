@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Button } from './model/button.model';
+import { Button, ButtonType } from './model/button.model';
 
 @Component({
   selector: 'app-button',
@@ -11,11 +11,23 @@ import { Button } from './model/button.model';
 export class ButtonComponent {
   @Input() buttons: Button[] = [];
 
-  click(fun: Function) {
+  click(fun: Function): void {
     fun();
   }
 
-  disabled(fun?: Function) {
+  disabled(fun?: Function): boolean {
     return fun ? fun() : false;
+  }
+
+  class(type?: ButtonType): string {
+    if (type) {
+      if (type === 'primary') {
+        return 'bg-primary-500 hover:bg-primary-700 focus:bg-primary-600 text-white';
+      }
+      if (type === 'outline') {
+        return 'bg-transparent border border-primary-500 hover:bg-primary-100 focus:bg-primary-100 text-primary-500';
+      }
+    }
+    return 'bg-primary-500 hover:bg-primary-700 focus:bg-primary-600 text-white';
   }
 }

@@ -22,10 +22,15 @@
       ></i>
       }
     </div>
-    <p class="mt-2 text-gray-600 line-clamp-2 text-xs h-10">
-      {{ card.description }}
-    </p>
-    <p class="mt-2">${{ card.price | number : "1.2-2" }}</p>
-    <app-button [buttons]="button"></app-button>
+    <div class="w-full h-10">
+      <p class="mt-2 text-gray-600 line-clamp-2 text-xs mb-2">
+        {{ card.description }}
+      </p>
+    </div>
+    <div class="flex justify-between items-center">
+      <p class="mt-2">${{ card.price | number : "1.2-2" }}</p>
+      <app-control-button />
+    </div>
+    <app-button [buttons]="button" />
   </div>
 </div>
