@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { take } from 'rxjs';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 import { Button } from '../../shared/components/button/model/button.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products-list',
@@ -15,10 +16,21 @@ import { Button } from '../../shared/components/button/model/button.model';
   styleUrl: './products-list.component.scss',
 })
 export class ProductsListComponent implements OnInit {
+  router = inject(Router);
   _dataService = inject(DataService);
   data: any[] = [];
   categorys: string[] = [];
-  button: Button[] = [{ label: 'buy', icon: 'bi-cart3', class: 'w-full mt-2', click: () => '' }];
+  button: Button[] = [
+    {
+      label: 'buy',
+      icon: 'bi-cart3',
+      class: 'w-full mt-2',
+      click: (data: any) => {
+        console.log(data);
+        this.router.navigate(['products/detail', { name: data.Name }]);
+      },
+    },
+  ];
 
   ngOnInit(): void {
     this._dataService
@@ -30,13 +42,13 @@ export class ProductsListComponent implements OnInit {
             if (!this.categorys.includes(e.Category))
               this.categorys.push(e.Category);
             return {
-              ...e,
               img: e.Image !== '' ? e.Image : e.Image1,
               name: e.Name,
               price: Number(e.Price.substring(1)),
               description: e.Description_title,
               votes: e.Reviews.votes,
               rating: e.Reviews.rating,
+              data: e,
             };
           })),
       });

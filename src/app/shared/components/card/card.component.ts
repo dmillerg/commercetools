@@ -15,4 +15,5 @@ import { ControlButtonComponent } from '../control-button/control-button.compone
 export class CardComponent {
   @Input() card!: Card;
   @Input() button:Button[]=[];
+  @Input() data?: any;
 }

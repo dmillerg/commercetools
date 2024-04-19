@@ -4,7 +4,7 @@ export interface Button {
   class?: string;
   type?: ButtonType;
   disable?: () => boolean;
-  click: () => void;
+  click: (data?: any) => void;
 }
 
 export type ButtonType = 'primary' | 'outline';

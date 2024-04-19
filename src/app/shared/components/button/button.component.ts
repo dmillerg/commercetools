@@ -10,9 +10,10 @@ import { Button, ButtonType } from './model/button.model';
 })
 export class ButtonComponent {
   @Input() buttons: Button[] = [];
+  @Input() data?: any;
 
   click(fun: Function): void {
-    fun();
+    fun(this.data);
   }
 
   disabled(fun?: Function): boolean {
