@@ -11,18 +11,21 @@
   </div>
   <div class="py-4 px-2">
     <h3 class="text-gray-700 font-semibold">{{ card.name }}</h3>
-    @for (item of [1,2,3,4,5]; track $index) {
-    <i
-      class="bi text-yellow-400"
-      [ngClass]="{
-        'bi-star': item >= card.rating,
-        'bi-star-fill': item < card.rating
-      }"
-    ></i>
-    }
-    <p class="mt-2 text-gray-600 line-clamp-2 text-xs">
+    <div class="flex gap-1 h-4">
+      @for (item of [1,2,3,4,5]; track $index) {
+      <i
+        class="bi text-yellow-400"
+        [ngClass]="{
+          'bi-star': item >= card.rating,
+          'bi-star-fill': item < card.rating
+        }"
+      ></i>
+      }
+    </div>
+    <p class="mt-2 text-gray-600 line-clamp-2 text-xs h-10">
       {{ card.description }}
     </p>
     <p class="mt-2">${{ card.price | number : "1.2-2" }}</p>
+    <app-button [buttons]="button"></app-button>
   </div>
 </div>

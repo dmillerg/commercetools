@@ -4,6 +4,7 @@ import { DataService } from '../../core/services/data.service';
 import { CommonModule } from '@angular/common';
 import { take } from 'rxjs';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
+import { Button } from '../../shared/components/button/model/button.model';
 
 @Component({
   selector: 'app-products-list',
@@ -17,6 +18,7 @@ export class ProductsListComponent implements OnInit {
   _dataService = inject(DataService);
   data: any[] = [];
   categorys: string[] = [];
+  button: Button[] = [{ label: 'buy', icon: 'bi-cart3', class: 'w-full mt-2', click: () => '' }];
 
   ngOnInit(): void {
     this._dataService
