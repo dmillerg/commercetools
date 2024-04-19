@@ -1,0 +1,21 @@
+<div
+  class="rounded-xl border cursor-pointer border-gray-300 w-fit flex flex-col overflow-hidden"
+>
+  <div class="w-full h-fit overflow-hidden">
+    <img
+      class="w-full object-contain z-0 hover:scale-110 transition-all duration-300"
+      [src]="card.img"
+      [alt]="card.name"
+      (onerror)="card.img = 'favicon.ico'"
+    />
+  </div>
+  <div class="py-4 px-2">
+    <h3 class="text-gray-700 font-semibold">{{ card.name }}</h3>
+    <p class="mt-2 text-gray-600 line-clamp-2 text-xs">
+      {{ card.description }}
+    </p>
+    <p class="mt-2 text-gray-600 line-clamp-2 text-xs">
+        ${{ card.price|number:'1.2-2' }}
+      </p>
+  </div>
+</div>
