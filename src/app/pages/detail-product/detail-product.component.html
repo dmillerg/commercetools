@@ -1,2 +1,49 @@
-<p>detail-product works!</p>
-{{data}}
+@if (data) {
+<div
+  class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 grid-flow-row-dense gap-10 place-items-start p-4"
+>
+  <div class="flex flex-col flex-col-reverse md:flex-row lg:flex-row xl:flex-row gap-2 items-start">
+    <img [src]="data.Image" class="object-contain w-20" alt="" />
+    <img [src]="data.Image1" class="object-contain flex-1" alt="" />
+  </div>
+  <div class="flex flex-col col-span-2">
+    <span class="text-primary-500">{{ data.Category }}</span>
+    <h1 class="text-gray-700 font-semibold text-4xl">{{ data.Name }}</h1>
+
+    <p class="text-xs font-bold">
+      {{ data.Colors }}
+    </p>
+    <div class="flex gap-2">
+      @for (item of data.Color_detail; track $index) {
+      <div
+        class="flex flex-col gap-2 border border-gray-300 w-20 p-2 rounded-md overflow-hidden"
+      >
+        <img [src]="item.image_url" class="object-contain rounded-sm" alt="" />
+        <p class="text-xs">{{ item.color }}</p>
+      </div>
+      }
+    </div>
+    <p class="mt-8 font-thin">${{ data.Price | number : "1.2-2" }}</p>
+
+    <h3 class="text-lg font-bold">{{ data.Description_title }}</h3>
+    <p class="text-sm">{{ data.Description_content }}</p>
+
+    <h3 class="text-lg font-bold mt-8">Details</h3>
+
+    <ul class="pl-4 list-disc">
+      @for (item of data!.Details.split('\n'); track $index) {
+      <li>{{ item }}</li>
+      }
+      <!-- ... -->
+    </ul>
+
+    <h3 class="text-lg font-bold mt-8">{{ data.Care.title }}</h3>
+    <ul class="pl-4 list-decimal">
+      @for (item of data!.Care.content; track $index) {
+      <li>{{ item }}</li>
+      }
+      <!-- ... -->
+    </ul>
+  </div>
+</div>
+}
