@@ -40,6 +40,7 @@ export class ProductsListComponent implements OnInit {
   currentPageData: any[] = [];
 
   onPageChange(data: any[]) {
+    this.scrollToTop()
     this.currentPageData = data;
   }
 
@@ -70,5 +71,9 @@ export class ProductsListComponent implements OnInit {
           this.currentPageData = this.data.slice(0, 10);
         },
       });
+  }
+
+  scrollToTop() {
+    document.getElementById('product')?.scrollIntoView({behavior:'smooth'})
   }
 }

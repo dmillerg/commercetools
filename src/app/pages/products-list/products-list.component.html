@@ -10,6 +10,7 @@
       }
     </div>
   </div>
+  <div class="-translate-y-52" id="product"></div>
   <div
     class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 w-full"
   >
@@ -21,8 +22,5 @@
     />}
   </div>
   @if( data.length > 0 ){
-  <app-paginator
-    [data]="data"
-    (pageChange)="onPageChange($event)"
-  />}
+  <app-paginator [data]="data" (pageChange)="onPageChange($event)" />}
 </div>
