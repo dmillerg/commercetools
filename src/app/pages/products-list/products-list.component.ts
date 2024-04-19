@@ -24,7 +24,7 @@ export class ProductsListComponent implements OnInit {
       .pipe(take(1))
       .subscribe({
         next: (response) =>
-          (this.data = response.map((e: any) => {
+          (this.data = response.map((e) => {
             if (!this.categorys.includes(e.Category))
               this.categorys.push(e.Category);
             return {
@@ -33,6 +33,8 @@ export class ProductsListComponent implements OnInit {
               name: e.Name,
               price: Number(e.Price.substring(1)),
               description: e.Description_title,
+              votes: e.Reviews.votes,
+              rating: e.Reviews.rating,
             };
           })),
       });

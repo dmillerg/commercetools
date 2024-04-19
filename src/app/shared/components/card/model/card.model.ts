@@ -3,4 +3,6 @@ export interface Card {
   img: string;
   description: string;
   price: number;
+  rating: number;
+  votes: number;
 }
