@@ -1,6 +1,7 @@
 <div
   [ngClass]="{ 'p-4 gap-2': card.loading }"
   class="rounded-xl border shadow-sm cursor-pointer border-gray-300 flex flex-col overflow-hidden w-full"
+  (click)="click(card.click)"
 >
   @if(card.card && !card.loading){
   <div class="w-full h-fit overflow-hidden">

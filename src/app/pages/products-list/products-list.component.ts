@@ -72,6 +72,8 @@ export class ProductsListComponent implements OnInit {
                 rating: e.Reviews.rating,
                 data: e,
               },
+              click: () =>
+                this.router.navigate(['products/detail', { name: e.Keywords }]),
               loading: false,
             };
           });

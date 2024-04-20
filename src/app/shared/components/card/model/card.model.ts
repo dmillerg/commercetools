@@ -8,5 +8,6 @@ export interface Card {
     votes: number;
     data?: any;
   };
+  click: () => void;
   loading?: boolean;
 }
