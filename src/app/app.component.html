@@ -1,6 +1,8 @@
 <app-header />
 <div class="fixed pt-16 h-full overflow-auto w-full">
-  <router-outlet />
+  <div [style.minHeight]="'calc(100% - 40px)'">
+    <router-outlet />
+  </div>
   <app-footer />
 </div>
 @if(splashscreen){<app-splash-screen />}
