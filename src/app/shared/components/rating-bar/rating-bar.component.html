@@ -1,0 +1,13 @@
+<div class="flex gap-1 h-4 items-center">
+  @for (item of [1,2,3,4,5]; track $index) {
+  <i
+    class="bi text-yellow-400"
+    [ngClass]="{
+      'bi-star-fill': item <= rating && !isHalfStar(item),
+      'bi-star-half': isHalfStar(item),
+      'bi-star': item > rating && !isHalfStar(item)
+    }"
+  ></i>
+  } @if (ratingText) { <span class="ml-2 font-bold">{{ rating }} </span>}
+  @if (votes) { <span class="ml-2 font-thin">{{ votes }} Reviews</span>}
+</div>
