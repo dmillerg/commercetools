@@ -1,0 +1,53 @@
+<div
+  class="flex fixed w-full h-full justify-center items-center top-0 bottom-0 left-0 right-0 bg-gray-900/20 z-50 backdrop-blur-sm"
+>
+  <div
+    class="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 bg-white p-8 gap-4 rounded-xl w-11/12 max-w-2xl relative shadow-lg place-items-center"
+  >
+    <img
+      src="assets/img/background.svg"
+      alt=""
+      class="h-60 object-contain min-w-lg hidden lg:flex xl:flex md:flex"
+    />
+    <div
+      class="flex flex-col justify-between h-full gap-8 text-center md:text-start lg:text-start xl:text-start"
+    >
+      <div
+        class="absolute -top-1 -right-6 bg-red-500 text-white p-4 rotate-45 rounded-xl shadow-lg"
+      >
+        limited offer
+      </div>
+      <h1
+        class="text-primary-500 text-2xl lg:text-4xl xl:text-4xl md:text-4xl relative font-bold"
+      >
+        Welcome to practical test
+        <span class="relative"
+          >commerceTools<img
+            class="w-8 -rotate-45 absolute -right-6 drop-shadow-xl top-2"
+            src="assets/img/static-bag.png"
+            alt=""
+        /></span>
+      </h1>
+      <p class="text-sm font-thin">
+        <span class="font-semibold">Aspiring Angular Developer:</span> Daniel
+        Miller González
+      </p>
+      <div class="flex gap-2">
+        <button
+          (click)="close.emit()"
+          class="flex-1 whitespace-nowrap text-sm px-4 py-2 rounded-3xl text-white bg-primary-500 w-fit mx-auto hover:bg-primary-600 transition-all duration-300 focus:outline focus:outline-2 outline-offset-2 outline-primary-500"
+        >
+          <i class="bi bi-check"></i>
+          Evaluate now
+        </button>
+        <a
+          href="mailto:dmillergg@gmail.com"
+          class="flex-1 text-center whitespace-nowrap text-sm px-4 py-2 rounded-3xl text-white bg-primary-500 w-fit mx-auto hover:bg-primary-600 transition-all duration-300 focus:outline focus:outline-2 outline-offset-2 outline-primary-500"
+        >
+          <i class="bi bi-envelope"></i>
+          Contact me
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

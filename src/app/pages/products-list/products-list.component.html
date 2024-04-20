@@ -4,7 +4,7 @@
     <div class="w-full flex flex-wrap gap-2 my-2">
       @for (item of categorys; track $index) {
       <span
-      (click)="categorySelected.set(item)"
+        (click)="categorySelected.set(item)"
         class="px-3 border border-gray-300 hover:scale-105 transition-all duration-300 cursor-pointer py-2 w-fit bg-gray-200 rounded-2xl text-xs"
         >{{ item }}</span
       >
@@ -17,12 +17,10 @@
   >
     <!-- {{data|json}} -->
     @for (item of currentPageData| filter: categorySelected(); track $index) {
-      <app-card
-      [card]="item"
-      [button]="button"
-      [data]="item.card?.data"
-    />}
+    <app-card [card]="item" [button]="button" [data]="item.card?.data" />}
   </div>
   @if( data.length > 0 ){
   <app-paginator [data]="data" (pageChange)="onPageChange($event)" />}
 </div>
+
+@if(welcomeModal){<app-welcome-modal (close)="welcomeModal = false" />}

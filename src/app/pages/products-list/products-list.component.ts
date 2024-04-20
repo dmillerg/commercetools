@@ -8,6 +8,7 @@ import { Button } from '../../shared/components/button/model/button.model';
 import { Router } from '@angular/router';
 import { FilterPipe } from '../../core/pipes/filter.pipe';
 import { FilterService } from '../../core/services/filter.service';
+import { WelcomeModalComponent } from '../../shared/components/welcome-modal/welcome-modal.component';
 
 @Component({
   selector: 'app-products-list',
@@ -18,6 +19,7 @@ import { FilterService } from '../../core/services/filter.service';
     PaginatorComponent,
     PaginatorComponent,
     FilterPipe,
+    WelcomeModalComponent,
   ],
   providers: [DataService],
   templateUrl: './products-list.component.html',
@@ -42,6 +44,7 @@ export class ProductsListComponent implements OnInit {
   currentPageData: any[] = [];
   filter = inject(FilterService);
   categorySelected = this.filter.value;
+  welcomeModal:boolean = true;
 
   onPageChange(data: any[]) {
     this.scrollToTop();
