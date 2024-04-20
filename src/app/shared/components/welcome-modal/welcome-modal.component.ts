@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { ModalService } from '../../../core/services/modal.service';
 
 @Component({
   selector: 'app-welcome-modal',
@@ -8,9 +9,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './welcome-modal.component.scss',
 })
 export class WelcomeModalComponent {
-  @Output() close = new EventEmitter<any>();
+  welcomeModal = inject(ModalService).modal;
   emit() {
     localStorage.setItem('offer', 'checked');
-    this.close.emit();
+    this.welcomeModal.set(false);
   }
 }

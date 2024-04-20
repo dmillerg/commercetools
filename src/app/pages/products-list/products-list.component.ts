@@ -44,7 +44,6 @@ export class ProductsListComponent implements OnInit {
   currentPageData: any[] = [];
   filter = inject(FilterService);
   categorySelected = this.filter.value;
-  welcomeModal:boolean = !localStorage.getItem('offer');
 
   onPageChange(data: any[]) {
     this.scrollToTop();

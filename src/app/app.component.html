@@ -6,3 +6,4 @@
   <app-footer />
 </div>
 @if(splashscreen){<app-splash-screen />}
+@if(welcomeModal() && !splashscreen){<app-welcome-modal />}

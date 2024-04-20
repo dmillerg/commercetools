@@ -22,5 +22,3 @@
   @if( data.length > 0 ){
   <app-paginator [data]="data" (pageChange)="onPageChange($event)" />}
 </div>
-
-@if(welcomeModal){<app-welcome-modal (close)="welcomeModal = false" />}
