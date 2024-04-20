@@ -9,7 +9,7 @@ import { RatingBarComponent } from '../rating-bar/rating-bar.component';
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CommonModule, ButtonComponent, ControlButtonComponent,RatingBarComponent],
+  imports: [CommonModule, ButtonComponent,RatingBarComponent],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
 })

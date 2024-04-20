@@ -40,7 +40,7 @@ export class ProductsListComponent implements OnInit {
   currentPageData: any[] = [];
 
   onPageChange(data: any[]) {
-    this.scrollToTop()
+    this.scrollToTop();
     this.currentPageData = data;
   }
 
@@ -49,6 +49,7 @@ export class ProductsListComponent implements OnInit {
   }
 
   getData() {
+    this.currentPageData = Array(10).fill({ loading: true });
     this._dataService
       .getData()
       .pipe(take(1))
@@ -58,13 +59,16 @@ export class ProductsListComponent implements OnInit {
             if (!this.categorys.includes(e.Category))
               this.categorys.push(e.Category);
             return {
-              img: e.Image !== '' ? e.Image : e.Image1,
-              name: e.Name,
-              price: Number(e.Price.substring(1)),
-              description: e.Description_title,
-              votes: e.Reviews.votes,
-              rating: e.Reviews.rating,
-              data: e,
+              card: {
+                img: e.Image !== '' ? e.Image : e.Image1,
+                name: e.Name,
+                price: Number(e.Price.substring(1)),
+                description: e.Description_title,
+                votes: e.Reviews.votes,
+                rating: e.Reviews.rating,
+                data: e,
+              },
+              loading: false,
             };
           });
           this.pageSize = this.data.length;
@@ -74,6 +78,6 @@ export class ProductsListComponent implements OnInit {
   }
 
   scrollToTop() {
-    document.getElementById('product')?.scrollIntoView({behavior:'smooth'})
+    document.getElementById('product')?.scrollIntoView({ behavior: 'smooth' });
   }
 }

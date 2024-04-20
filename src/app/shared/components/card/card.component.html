@@ -1,26 +1,33 @@
 <div
-  class="rounded-xl border shadow-sm cursor-pointer border-gray-300 w-fit flex flex-col overflow-hidden"
+  [ngClass]="{ 'p-4 gap-2': card.loading }"
+  class="rounded-xl border shadow-sm cursor-pointer border-gray-300 flex flex-col overflow-hidden w-full"
 >
+  @if(card.card && !card.loading){
   <div class="w-full h-fit overflow-hidden">
     <img
       class="w-full object-contain z-0 hover:scale-110 transition-all duration-300"
-      src="{{card.img}}"
-      [alt]="card.name"
-      (onerror)="card.img = 'favicon.ico'"
+      src="{{ card.card.img }}"
+      [alt]="card.card.name"
+      (onerror)="card.card.img = 'favicon.ico'"
     />
   </div>
   <div class="py-4 px-2">
-    <h3 class="text-gray-700 font-semibold">{{ card.name }}</h3>
-    <app-rating-bar [rating]="card.rating"></app-rating-bar>
+    <h3 class="text-gray-700 font-semibold">{{ card.card.name }}</h3>
+    <app-rating-bar [rating]="card.card.rating"></app-rating-bar>
     <div class="w-full h-10">
       <p class="mt-2 text-gray-600 line-clamp-2 text-xs mb-2">
-        {{ card.description }}
+        {{ card.card.description }}
       </p>
     </div>
     <div class="flex justify-between items-center flex-wrap">
-      <p class="mt-2">${{ card.price | number : "1.2-2" }}</p>
-      <app-control-button />
+      <p class="mt-2">${{ card.card.price | number : "1.2-2" }}</p>
     </div>
     <app-button [buttons]="button" [data]="data" />
   </div>
+  } @if (card.loading) {
+  <div class="w-full bg-gray-200 rounded-xl h-60 animate-pulse"></div>
+  <span class="w-20 animate-pulse h-6 bg-gray-200 rounded-lg"></span>
+  @for (item of [1,1]; track $index) {
+  <span class="w-full animate-pulse h-6 bg-gray-200 rounded-lg"></span>
+  }}
 </div>
