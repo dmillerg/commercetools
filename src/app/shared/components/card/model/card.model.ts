@@ -6,6 +6,7 @@ export interface Card {
     price: number;
     rating: number;
     votes: number;
+    data?: any;
   };
   loading?: boolean;
 }

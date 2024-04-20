@@ -4,21 +4,23 @@
     <div class="w-full flex flex-wrap gap-2 my-2">
       @for (item of categorys; track $index) {
       <span
+      (click)="categorySelected.set(item)"
         class="px-3 border border-gray-300 hover:scale-105 transition-all duration-300 cursor-pointer py-2 w-fit bg-gray-200 rounded-2xl text-xs"
         >{{ item }}</span
       >
       }
     </div>
   </div>
-  <div class="-translate-y-52" id="product"></div>
+  <div class="-translate-y-96" id="product"></div>
   <div
     class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 w-full"
   >
     <!-- {{data|json}} -->
-    @for (item of currentPageData; track $index) {<app-card
+    @for (item of currentPageData| filter: categorySelected(); track $index) {
+      <app-card
       [card]="item"
       [button]="button"
-      [data]="item.data"
+      [data]="item.card?.data"
     />}
   </div>
   @if( data.length > 0 ){

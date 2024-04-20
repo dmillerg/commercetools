@@ -6,7 +6,7 @@
   <div class="w-full h-fit overflow-hidden">
     <img
       class="w-full object-contain z-0 hover:scale-110 transition-all duration-300"
-      src="{{ card.card.img }}"
+      [src]="card.card.img"
       [alt]="card.card.name"
       (onerror)="card.card.img = 'favicon.ico'"
     />

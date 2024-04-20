@@ -6,11 +6,15 @@
     <div class="rotate-12 scale-110 text-yellow-400">T</div>
     ools
   </div>
-  <div class="flex-1 relative md:flex lg:flex xl:flex items-center hidden max-w-xl">
+  <div
+    class="flex-1 relative md:flex lg:flex xl:flex items-center hidden max-w-xl"
+  >
     <input
       type="text"
       class="w-full outline-none px-4 h-8 text-sm rounded-2xl bg-white/40 placeholder-white"
       placeholder="search"
+      name="search"
+      (ngModelChange)="change($event)"
     />
     <i class="absolute right-3 bi bi-search text-white"></i>
   </div>

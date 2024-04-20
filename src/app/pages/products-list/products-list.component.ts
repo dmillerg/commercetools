@@ -6,6 +6,8 @@ import { take } from 'rxjs';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 import { Button } from '../../shared/components/button/model/button.model';
 import { Router } from '@angular/router';
+import { FilterPipe } from '../../core/pipes/filter.pipe';
+import { FilterService } from '../../core/services/filter.service';
 
 @Component({
   selector: 'app-products-list',
@@ -15,6 +17,7 @@ import { Router } from '@angular/router';
     CommonModule,
     PaginatorComponent,
     PaginatorComponent,
+    FilterPipe,
   ],
   providers: [DataService],
   templateUrl: './products-list.component.html',
@@ -38,6 +41,8 @@ export class ProductsListComponent implements OnInit {
   ];
   pageSize: number = 0;
   currentPageData: any[] = [];
+  filter = inject(FilterService);
+  categorySelected =  this.filter.value;
 
   onPageChange(data: any[]) {
     this.scrollToTop();
