@@ -9,4 +9,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class WelcomeModalComponent {
   @Output() close = new EventEmitter<any>();
+  emit() {
+    localStorage.setItem('offer', 'checked');
+    this.close.emit();
+  }
 }
