@@ -34,15 +34,14 @@ export class ProductsListComponent implements OnInit {
       icon: 'bi-cart3',
       class: 'w-full mt-2',
       click: (data: any) => {
-        console.log(data);
-        this.router.navigate(['products/detail', { name: data.Name }]);
+        this.router.navigate(['products/detail', { name: data.Keywords }]);
       },
     },
   ];
   pageSize: number = 0;
   currentPageData: any[] = [];
   filter = inject(FilterService);
-  categorySelected =  this.filter.value;
+  categorySelected = this.filter.value;
 
   onPageChange(data: any[]) {
     this.scrollToTop();

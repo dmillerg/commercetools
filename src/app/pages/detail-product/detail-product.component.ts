@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { DataService } from '../../core/services/data.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { take } from 'rxjs';
 import { Item } from '../../core/models/item.model';
 import { CommonModule } from '@angular/common';
@@ -17,6 +17,7 @@ import { ButtonComponent } from '../../shared/components/button/button.component
     RatingBarComponent,
     ControlButtonComponent,
     ButtonComponent,
+    RouterLink
   ],
   providers: [DataService],
   templateUrl: './detail-product.component.html',
@@ -50,7 +51,7 @@ export class DetailProductComponent implements OnInit {
       .pipe(take(1))
       .subscribe({
         next: (response) => {
-          this.data = response.filter((e) => e.Name === name)[0];
+          this.data = response.filter((e) => e.Keywords === name)[0];
           this.data.Price = this.data.Price.substring(1);
         },
       });
@@ -60,5 +61,9 @@ export class DetailProductComponent implements OnInit {
     const image = this.data!.Image1;
     this.data!.Image1 = this.data!.Image;
     this.data!.Image = image;
+  }
+
+  navigate(){
+    this.router.navigate(['products'])
   }
 }
